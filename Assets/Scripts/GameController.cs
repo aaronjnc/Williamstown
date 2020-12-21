@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public bool bus = true;
     public Vector2 position;
+    public NewScene sceneloader;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

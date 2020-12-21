@@ -10,6 +10,7 @@ public class NewScene : MonoBehaviour
     //type 1 - building
     GameObject player;
     GameController controller;
+    string newscene;
     void Awake()
     {
         controller = GameObject.Find("GameControl").GetComponent<GameController>();
@@ -23,10 +24,10 @@ public class NewScene : MonoBehaviour
             controller.bus = false;
         controller.position = player.transform.position;
         Debug.Log(controller.bus + " " + controller.position);
-        LoadScene(scene);
+        newscene = scene;
     }
-    public void LoadScene(string scene)
+    public void LoadScene()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(newscene);
     }
 }
