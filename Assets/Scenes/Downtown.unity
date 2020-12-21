@@ -304,7 +304,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -328,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289742645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1, y: -1.7, z: 1}
+  m_LocalPosition: {x: -2.1, y: -1.7, z: -1}
   m_LocalScale: {x: 0.98325, y: 1.5158852, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 316379282}
   - component: {fileID: 316379284}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DowntownMap
   m_TagString: clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -386,7 +386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316379281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.84, y: -1.82, z: 1}
+  m_LocalPosition: {x: -6.84, y: -1.82, z: -1}
   m_LocalScale: {x: 1.6, y: 2.021369, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &828403214
 Transform:
   m_ObjectHideFlags: 0
@@ -590,6 +590,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6270187876773946596, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
   m_PrefabInstance: {fileID: 6270187876858666273}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1104097714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104097708}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e616325ae1a2b40bbffd770e8bdddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loc: 0
+  vehicles: {fileID: 828403213}
+  type: 0
 --- !u!1 &1512629323
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +616,7 @@ GameObject:
   - component: {fileID: 1512629325}
   - component: {fileID: 1512629324}
   - component: {fileID: 1512629326}
+  - component: {fileID: 1512629327}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -699,6 +715,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.68, y: 4.98}
   m_EdgeRadius: 0
+--- !u!114 &1512629327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512629323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f84695e84fbee4884ff560bbe424cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicle: {fileID: 828403213}
 --- !u!1 &2019449525
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6270187876773946596, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6270187876773946601, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalPosition.x
