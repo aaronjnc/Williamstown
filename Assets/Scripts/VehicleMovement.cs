@@ -44,23 +44,28 @@ public class VehicleMovement : MonoBehaviour
             GameObject.Find("Vehicles").SetActive(false);
         }
     }
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1f);
+        if (!empty)
+        {
+            agent.SetActive(true);
+            vehiclerenderer.sprite = emptyvehicle;
+        }
+        else
+        {
+            agent.SetActive(false);
+            vehiclerenderer.sprite = charvehicle;
+        }
+        empty = !empty;
+        movable = true;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.gameObject.name == "VehicleStop")
         {
             movable = false;
-            if (!empty)
-            {
-                agent.SetActive(true);
-                vehiclerenderer.sprite = emptyvehicle;
-            }
-            else
-            {
-                agent.SetActive(false);
-                vehiclerenderer.sprite = charvehicle;
-            }
-            empty = !empty;
-            movable = true;
+            StartCoroutine("wait");
         }
     }
 }

@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Stop(CallbackContext ctx)
     {
         direction = new Vector2(0, 0);
+        GetComponent<Animator>().runtimeAnimatorController = null;
         GetComponent<Animator>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
     }

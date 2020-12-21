@@ -23,7 +23,6 @@ public class NewScene : MonoBehaviour
         else
             controller.bus = false;
         controller.position = player.transform.position;
-        Debug.Log(controller.bus + " " + controller.position);
         newscene = scene;
     }
     public void LoadScene()

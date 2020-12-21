@@ -7,7 +7,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class ClickAction : MonoBehaviour
 {
     PlayerControls controls;
-
+    WalktoLoc player;
     void Awake()
     {
         controls = new PlayerControls();
@@ -17,16 +17,25 @@ public class ClickAction : MonoBehaviour
     public int loadtype;
     void OnClick(CallbackContext ctx)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 10f);
-        if (hit && hit.transform.gameObject.CompareTag("clickable"))
+        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 min = GetComponent<Collider2D>().bounds.min;
+        Vector2 max = GetComponent<Collider2D>().bounds.max;
+        if (mousepos.x > min.x && mousepos.x < max.x && mousepos.y > min.y && mousepos.y < max.y)
         {
-            NewScene();
+            if (loadtype < 2)
+            {
+                NewScene();
+            }
+            player = GameObject.Find("Agent").GetComponent<WalktoLoc>();
+            player.type = loadtype;
+            player.loc = gameObject.transform.position.x;
+            player.enabled = true;
         }
     }
     void NewScene()
     {
         NewScene load = gameObject.AddComponent<NewScene>();
         load.LoadType(loadtype, gameObject.name);
+        GameObject.Find("GameControl").GetComponent<GameController>().sceneloader = load;
     }
 }
