@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class SceneLoad : MonoBehaviour
 {
@@ -17,9 +19,11 @@ public class SceneLoad : MonoBehaviour
             player.SetActive(false);
             vehicle.SetActive(true);
         }
-        else
+        else if (controller.click == Clickinfo.ClickType.Reload)
         {
-            player.transform.position = controller.position;
+            Vector3 pos = new Vector3(controller.position.Last().x, player.transform.position.y, player.transform.position.z);
+            player.transform.position = pos;
+            controller.position.RemoveAt(controller.position.Count - 1);
         }
     }
 }
