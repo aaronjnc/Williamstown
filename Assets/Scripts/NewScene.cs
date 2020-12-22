@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class NewScene : MonoBehaviour
 {
-    int type = 0;
-    //type 0 - bus
-    //type 1 - building
     GameObject player;
     GameController controller;
     string newscene;
@@ -16,17 +13,21 @@ public class NewScene : MonoBehaviour
         controller = GameObject.Find("GameControl").GetComponent<GameController>();
         player = GameObject.Find("Agent");
     }
-    public void LoadType(int num, string scene)
+    public void LoadType(Clickinfo.ClickType click, string scene, Vector2 pos)
     {
-        if (type == 0)
+        if (click == Clickinfo.ClickType.Bus)
             controller.bus = true;
         else
             controller.bus = false;
-        controller.position = player.transform.position;
+        if (click == Clickinfo.ClickType.Load)
+            controller.position.Add(pos);
         newscene = scene;
+        controller.click = click;
     }
     public void LoadScene()
     {
-        SceneManager.LoadScene(newscene);
+        player.GetComponent<PlayerMovement>().controls.Disable();
+        GameObject.Find("Background").GetComponent<ClickAction>().controls.Disable();
+        SceneManager.LoadScene(newscene, LoadSceneMode.Single);
     }
 }

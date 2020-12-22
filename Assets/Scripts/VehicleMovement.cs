@@ -14,12 +14,14 @@ public class VehicleMovement : MonoBehaviour
     bool empty = false;
     float bounds;
     Vector2 startpos;
+    Vector2 size;
     void Start()
     {
         startpos = transform.position;
         vehicle = GetComponent<Rigidbody2D>();
         vehiclerenderer = GetComponent<SpriteRenderer>();
         bounds = GameObject.Find("Background").GetComponent<Collider2D>().bounds.extents.x;
+        size = vehiclerenderer.bounds.size;
     }
     void Update()
     {
@@ -57,6 +59,7 @@ public class VehicleMovement : MonoBehaviour
             agent.SetActive(false);
             vehiclerenderer.sprite = charvehicle;
         }
+        NewScale();
         empty = !empty;
         movable = true;
     }
@@ -65,7 +68,17 @@ public class VehicleMovement : MonoBehaviour
         if (collision.transform.gameObject.name == "VehicleStop")
         {
             movable = false;
+            collision.transform.gameObject.SetActive(false);
             StartCoroutine("wait");
         }
+    }
+    void NewScale()
+    {
+        float sizex = vehiclerenderer.bounds.size.x;
+        float sizey = vehiclerenderer.bounds.size.y;
+        Vector3 rescale = transform.localScale;
+        rescale.x = size.x * rescale.x / sizex;
+        rescale.y = size.y * rescale.y / sizey;
+        transform.localScale = rescale;
     }
 }

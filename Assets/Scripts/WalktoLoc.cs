@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 
 public class WalktoLoc : MonoBehaviour
 {
     float speed;
     public float loc;
     Vector2 dir = new Vector2(0,0);
-    AnimatorController right;
-    AnimatorController left;
+    RuntimeAnimatorController right;
+    RuntimeAnimatorController left;
     Rigidbody2D player;
     public GameObject vehicles;
-    public int type;
+    public Clickinfo.ClickType type;
     bool lookR = false;
     Sprite sprite;
     private void OnEnable()
@@ -58,10 +57,13 @@ public class WalktoLoc : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = sprite;
         switch(type)
         {
-            case 0:
+            case Clickinfo.ClickType.Bus:
                 vehicles.SetActive(true);
                 break;
-            case 1:
+            case Clickinfo.ClickType.Load:
+                GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
+                break;
+            case Clickinfo.ClickType.Reload:
                 GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
                 break;
         }

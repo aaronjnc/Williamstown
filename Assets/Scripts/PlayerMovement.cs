@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
-using UnityEditor.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D player;
-    PlayerControls controls;
+    public PlayerControls controls;
     Vector2 direction;
     public float speed = 5f;
-    public AnimatorController left;
-    public AnimatorController right;
+    public RuntimeAnimatorController left;
+    public RuntimeAnimatorController right;
     Sprite sprite;
     // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>().sprite;
         player = GetComponent<Rigidbody2D>();
+        //controls = GameObject.Find("GameControl").GetComponent<GameController>().control;
         controls = new PlayerControls();
         controls.BaseActions.PlayerMovement.performed += OnMove;
         controls.BaseActions.PlayerMovement.canceled += Stop;
