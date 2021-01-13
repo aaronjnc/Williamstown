@@ -13,7 +13,7 @@ public class VehicleMovement : MonoBehaviour
     public Sprite emptyvehicle;
     bool empty = false;
     float bounds;
-    Vector2 startpos;
+    Vector3 startpos;
     Vector2 size;
     void Start()
     {
@@ -68,7 +68,7 @@ public class VehicleMovement : MonoBehaviour
         if (collision.transform.gameObject.name == "VehicleStop")
         {
             movable = false;
-            collision.transform.gameObject.SetActive(false);
+            //collision.transform.gameObject.SetActive(false);
             StartCoroutine("wait");
         }
     }
