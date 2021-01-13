@@ -9,9 +9,63 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Downtown.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 5cb0c2ef019d17141819698fb5c022f1
+  - enabled: 1
+    path: Assets/Scenes/Downtown/Downtown.unity
     guid: 3ab4bd3781be49041a94f2702b092704
   - enabled: 1
-    path: Assets/Scenes/Orchestra.unity
+    path: Assets/Scenes/Downtown/Orchestra.unity
     guid: bba07882f5df7dd44bf2e65e0ffb00c3
+  - enabled: 1
+    path: Assets/Scenes/HP/Hogsmeade.unity
+    guid: a9f4ea976eb89a644ad12a92fa37b0f1
+  - enabled: 1
+    path: Assets/Scenes/HP/EntranceHall.unity
+    guid: bbff3d76ec368c14e8437ccfa88e66ba
+  - enabled: 1
+    path: Assets/Scenes/HP/DiagonAlley.unity
+    guid: 58ef1a29922886b4aa6006885f0b4be5
+  - enabled: 1
+    path: Assets/Scenes/KhazadDum.unity
+    guid: 55ca8fdb1f5671348b2eb48b7cb6fc9d
+  - enabled: 1
+    path: Assets/Scenes/Downtown/Diner.unity
+    guid: ad7666bcc3356e84e886cf80c5f512bc
+  - enabled: 1
+    path: Assets/Scenes/IJ/Library.unity
+    guid: f424c64dc4ac05f45a9de10d2496186b
+  - enabled: 1
+    path: Assets/Scenes/IJ/LibraryInt.unity
+    guid: a771e1c03adad4447b4c6bba9299634e
+  - enabled: 1
+    path: Assets/Scenes/IJ/Petra.unity
+    guid: c2fa0cfb7275b694a98136dae0cfa87e
+  - enabled: 1
+    path: Assets/Scenes/IJ/GrailRoom.unity
+    guid: 544fdc2ebd365b5429ebe1d46d7e01c1
+  - enabled: 1
+    path: Assets/Scenes/Jaws/Amity.unity
+    guid: 5f5c24ba2853aa945855303627e86dc6
+  - enabled: 1
+    path: Assets/Scenes/Jaws/Beach.unity
+    guid: ae9b00f761aea994ebeba194c99b4a64
+  - enabled: 1
+    path: Assets/Scenes/JP/JurassicPark.unity
+    guid: a265e33c80e1a60449cd6bd1f1552421
+  - enabled: 1
+    path: Assets/Scenes/JP/VisitorCenter.unity
+    guid: 0081de865da026242927a10a72ee0e56
+  - enabled: 1
+    path: Assets/Scenes/Maps/MainMap.unity
+    guid: 96f939c7e27117044969bbc81ca4f928
+  - enabled: 1
+    path: Assets/Scenes/SW/Cantina.unity
+    guid: bae492236d48dfb4e9de48cf67a0ac8d
+  - enabled: 1
+    path: Assets/Scenes/SW/LarsResidence.unity
+    guid: a7003e772477750469df7de61c7cee93
+  - enabled: 1
+    path: Assets/Scenes/SW/MosEisley.unity
+    guid: 1aa32300479b3d543b8809c86bd6dde0
   m_configObjects: {}

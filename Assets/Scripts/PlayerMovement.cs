@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
-using UnityEditor.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D player;
-    PlayerControls controls;
+    public PlayerControls controls;
     Vector2 direction;
     public float speed = 5f;
-    public AnimatorController left;
-    public AnimatorController right;
+    public RuntimeAnimatorController left;
+    public RuntimeAnimatorController right;
     Sprite sprite;
+    public bool walkoff;
+    BoxCollider2D background;
+    BoxCollider2D playercoll;
     // Start is called before the first frame update
     void Start()
     {
+        background = GameObject.Find("Background").GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>().sprite;
         player = GetComponent<Rigidbody2D>();
+        playercoll = GetComponent<BoxCollider2D>();
+        //controls = GameObject.Find("GameControl").GetComponent<GameController>().control;
         controls = new PlayerControls();
         controls.BaseActions.PlayerMovement.performed += OnMove;
         controls.BaseActions.PlayerMovement.canceled += Stop;
@@ -45,5 +50,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         player.position += direction*speed*Time.deltaTime;
+        if (!walkoff)
+        {
+            player.position = new Vector3(Mathf.Clamp(player.position.x, -background.bounds.extents.x + playercoll.bounds.extents.x, background.bounds.extents.x - playercoll.bounds.extents.x), player.position.y);
+        }
     }
 }
