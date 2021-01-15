@@ -395,6 +395,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2588244621395775502, guid: a0ab5447f93d8f042a633568633ad678, type: 3}
+      propertyPath: left
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2588244621535529019, guid: a0ab5447f93d8f042a633568633ad678, type: 3}
       propertyPath: m_Name
       value: Barriers
