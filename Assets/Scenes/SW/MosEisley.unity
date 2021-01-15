@@ -307,7 +307,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8557940689825581188, guid: 82c52bf5c1d4db449a8fb06afe3385c5, type: 3}
       propertyPath: m_Name
-      value: MainMap
+      value: SWMap
       objectReference: {fileID: 0}
     - target: {fileID: 8557940689825581190, guid: 82c52bf5c1d4db449a8fb06afe3385c5, type: 3}
       propertyPath: m_LocalPosition.x
