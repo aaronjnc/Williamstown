@@ -59,6 +59,7 @@ public class WalktoLoc : MonoBehaviour
         {
             case Clickinfo.ClickType.Bus:
                 vehicles.SetActive(true);
+                vehicles.GetComponentInChildren<VehicleMovement>().Reload();
                 break;
             case Clickinfo.ClickType.Load:
                 GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
