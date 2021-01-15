@@ -221,6 +221,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1602439121536020210, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
+      propertyPath: vehicles
+      value: 
+      objectReference: {fileID: 1323731594231450363}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8696108
