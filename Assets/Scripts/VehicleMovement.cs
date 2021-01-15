@@ -7,6 +7,7 @@ public class VehicleMovement : MonoBehaviour
     public GameObject agent;
     Rigidbody2D vehicle;
     SpriteRenderer vehiclerenderer;
+    GameObject stop;
     public float speed = 5f;
     bool movable = true;
     public Sprite charvehicle;
@@ -22,6 +23,7 @@ public class VehicleMovement : MonoBehaviour
         vehiclerenderer = GetComponent<SpriteRenderer>();
         bounds = GameObject.Find("Background").GetComponent<Collider2D>().bounds.extents.x;
         size = vehiclerenderer.bounds.size;
+        stop = GameObject.Find("VehicleStop");
     }
     void Update()
     {
@@ -31,6 +33,7 @@ public class VehicleMovement : MonoBehaviour
         }
         else if (vehicle.position.x >= bounds)
         {
+            stop.SetActive(true);
             OffScreen();
         }
     }
@@ -65,9 +68,10 @@ public class VehicleMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.gameObject.name == "VehicleStop")
+        if (collision.transform.gameObject.name.Equals("VehicleStop"))
         {
             movable = false;
+            collision.transform.gameObject.SetActive(false);
             //collision.transform.gameObject.SetActive(false);
             StartCoroutine("wait");
         }

@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 569087998}
   - component: {fileID: 569088000}
   - component: {fileID: 569088001}
+  - component: {fileID: 569088002}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -386,6 +387,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.82, y: 6.02}
   m_EdgeRadius: 0
+--- !u!114 &569088002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569087997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a2b19543ed0be40b9b2290918d9cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &843766726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent
       objectReference: {fileID: 0}
+    - target: {fileID: 1602439121536020210, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
+      propertyPath: vehicles
+      value: 
+      objectReference: {fileID: 1168583718}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.86
@@ -732,3 +749,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1602439121536020204, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
   m_PrefabInstance: {fileID: 843766726}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1911896872
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911896871}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.8, y: 5.28}
+    newSize: {x: 1.8, y: 5.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 5.28}
+  m_EdgeRadius: 0
