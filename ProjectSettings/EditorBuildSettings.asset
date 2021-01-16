@@ -71,4 +71,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/SWMap.unity
     guid: 5026f4d03d6287d46957bc1bde589a53
+  - enabled: 1
+    path: Assets/Scenes/Maps/HPMap.unity
+    guid: d4551f6a60c4a0d49b2791c88c759cd4
+  - enabled: 1
+    path: Assets/Scenes/HP/GreatHall.unity
+    guid: fcafb02838db2f446953001ff7b60f78
+  - enabled: 1
+    path: Assets/Scenes/SW/Dagobah.unity
+    guid: 3b1c6bf5bbaeb5f48b44a26ad02c88e0
+  - enabled: 1
+    path: Assets/Scenes/SW/Coruscant.unity
+    guid: 149e9e6edf3527b45a4b9920b65f7c80
   m_configObjects: {}
