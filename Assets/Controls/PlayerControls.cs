@@ -103,6 +103,77 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Podracer"",
+            ""id"": ""35d279ff-d0b7-425b-b52f-aac7f3863c56"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""3ea508db-e157-41d3-bd5e-d68188d698c0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""9c244889-1dfb-4c3a-b26b-9a929dde3efc"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""32479bf4-d2f8-41d8-bd1f-8baf24eb5592"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fe8c24fb-b37d-4586-9ddc-14fda6a8443b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3928dcf8-0e24-45d2-aa26-c6afce1ebec4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d7999b54-314e-49d8-b039-e91c4696405b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -111,6 +182,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_BaseActions = asset.FindActionMap("BaseActions", throwIfNotFound: true);
         m_BaseActions_PlayerMovement = m_BaseActions.FindAction("PlayerMovement", throwIfNotFound: true);
         m_BaseActions_Click = m_BaseActions.FindAction("Click", throwIfNotFound: true);
+        // Podracer
+        m_Podracer = asset.FindActionMap("Podracer", throwIfNotFound: true);
+        m_Podracer_Movement = m_Podracer.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -197,9 +271,46 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public BaseActionsActions @BaseActions => new BaseActionsActions(this);
+
+    // Podracer
+    private readonly InputActionMap m_Podracer;
+    private IPodracerActions m_PodracerActionsCallbackInterface;
+    private readonly InputAction m_Podracer_Movement;
+    public struct PodracerActions
+    {
+        private @PlayerControls m_Wrapper;
+        public PodracerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Podracer_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Podracer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PodracerActions set) { return set.Get(); }
+        public void SetCallbacks(IPodracerActions instance)
+        {
+            if (m_Wrapper.m_PodracerActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_PodracerActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_PodracerActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_PodracerActionsCallbackInterface.OnMovement;
+            }
+            m_Wrapper.m_PodracerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+            }
+        }
+    }
+    public PodracerActions @Podracer => new PodracerActions(this);
     public interface IBaseActionsActions
     {
         void OnPlayerMovement(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+    }
+    public interface IPodracerActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
     }
 }
