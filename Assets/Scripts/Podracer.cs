@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Podracer : MonoBehaviour
 {
+    public float health = 3.0f;
     public float maxspeed = 4f;
     Rigidbody2D player;
     public float speed = 4f;
@@ -31,6 +32,17 @@ public class Podracer : MonoBehaviour
         if (player.velocity.magnitude != 0)
         {
             player.velocity = player.velocity.normalized * (player.velocity.magnitude - friction*Time.deltaTime);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.layer.Equals(8))
+        {
+            health--;
+            if (health == 0)
+            {
+                Debug.Log("Destroyed");
+            }
         }
     }
 }
