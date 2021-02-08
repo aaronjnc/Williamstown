@@ -174,6 +174,74 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""TextControls"",
+            ""id"": ""160725c3-dd72-475b-acac-5019999a3283"",
+            ""actions"": [
+                {
+                    ""name"": ""Switch"",
+                    ""type"": ""Value"",
+                    ""id"": ""32bdba05-22d0-417e-a327-85621e70cb1c"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Accelerate"",
+                    ""type"": ""Button"",
+                    ""id"": ""577f9420-3622-4c8d-b189-4b238961a586"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""ca1da646-af99-456c-81bf-47726bad25d0"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""18284d10-e971-4e4f-911c-061cd5e34c30"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""7dab9a41-6110-4ef3-b687-9e4f2577a87f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bab33593-ff03-411c-af99-f3927eee39d1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -185,6 +253,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Podracer
         m_Podracer = asset.FindActionMap("Podracer", throwIfNotFound: true);
         m_Podracer_Movement = m_Podracer.FindAction("Movement", throwIfNotFound: true);
+        // TextControls
+        m_TextControls = asset.FindActionMap("TextControls", throwIfNotFound: true);
+        m_TextControls_Switch = m_TextControls.FindAction("Switch", throwIfNotFound: true);
+        m_TextControls_Accelerate = m_TextControls.FindAction("Accelerate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +376,47 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public PodracerActions @Podracer => new PodracerActions(this);
+
+    // TextControls
+    private readonly InputActionMap m_TextControls;
+    private ITextControlsActions m_TextControlsActionsCallbackInterface;
+    private readonly InputAction m_TextControls_Switch;
+    private readonly InputAction m_TextControls_Accelerate;
+    public struct TextControlsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public TextControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Switch => m_Wrapper.m_TextControls_Switch;
+        public InputAction @Accelerate => m_Wrapper.m_TextControls_Accelerate;
+        public InputActionMap Get() { return m_Wrapper.m_TextControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TextControlsActions set) { return set.Get(); }
+        public void SetCallbacks(ITextControlsActions instance)
+        {
+            if (m_Wrapper.m_TextControlsActionsCallbackInterface != null)
+            {
+                @Switch.started -= m_Wrapper.m_TextControlsActionsCallbackInterface.OnSwitch;
+                @Switch.performed -= m_Wrapper.m_TextControlsActionsCallbackInterface.OnSwitch;
+                @Switch.canceled -= m_Wrapper.m_TextControlsActionsCallbackInterface.OnSwitch;
+                @Accelerate.started -= m_Wrapper.m_TextControlsActionsCallbackInterface.OnAccelerate;
+                @Accelerate.performed -= m_Wrapper.m_TextControlsActionsCallbackInterface.OnAccelerate;
+                @Accelerate.canceled -= m_Wrapper.m_TextControlsActionsCallbackInterface.OnAccelerate;
+            }
+            m_Wrapper.m_TextControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Switch.started += instance.OnSwitch;
+                @Switch.performed += instance.OnSwitch;
+                @Switch.canceled += instance.OnSwitch;
+                @Accelerate.started += instance.OnAccelerate;
+                @Accelerate.performed += instance.OnAccelerate;
+                @Accelerate.canceled += instance.OnAccelerate;
+            }
+        }
+    }
+    public TextControlsActions @TextControls => new TextControlsActions(this);
     public interface IBaseActionsActions
     {
         void OnPlayerMovement(InputAction.CallbackContext context);
@@ -312,5 +425,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IPodracerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface ITextControlsActions
+    {
+        void OnSwitch(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
     }
 }

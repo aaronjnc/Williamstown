@@ -26,11 +26,29 @@ public class ClickAction : MonoBehaviour
             {
                 NewScene(clicked);
             }
-            player = GameObject.Find("Agent").GetComponent<WalktoLoc>();
-            player.type = info.click;
-            player.loc = clicked.transform.position.x;
-            player.enabled = true;
+            WalktoLoc(clicked, info);
         }
+    }
+    void WalktoLoc(GameObject clicked, Clickinfo info)
+    {
+        player = GameObject.Find("Agent").GetComponent<WalktoLoc>();
+        player.type = info.click;
+        if (info.click.Equals(Clickinfo.ClickType.Talk))
+        {
+            GameObject.Find("GameControl").GetComponent<GameController>().talking = clicked;
+            float relloc = GameObject.Find("Agent").transform.position.x - clicked.transform.position.x;
+            if (relloc > 0)
+            {
+                player.loc = clicked.transform.position.x + 1.5f;
+            }
+            else
+            {
+                player.loc = clicked.transform.position.x - 1.5f;
+            }
+        }
+        else
+            player.loc = clicked.transform.position.x;
+        player.enabled = true;
     }
     void NewScene(GameObject clicked)
     {
