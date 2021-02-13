@@ -83,4 +83,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SW/Coruscant.unity
     guid: 149e9e6edf3527b45a4b9920b65f7c80
+  - enabled: 1
+    path: Assets/Scenes/SW/Wattos.unity
+    guid: 0b447de7d9feed64892123e7eb7397c8
+  - enabled: 1
+    path: Assets/Scenes/HP/Ollivanders.unity
+    guid: c4e3eea91a956d44988f8dfc3a7ff73b
+  - enabled: 1
+    path: Assets/Scenes/HP/Weasleys.unity
+    guid: 07028301b1b858345be76c7997f860fe
   m_configObjects: {}
