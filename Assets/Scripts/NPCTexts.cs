@@ -7,6 +7,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class NPCTexts : MonoBehaviour
 {
+    GameObject player;
     public Object PlayerText;
     PlayerControls controls;
     Vector2 picsize;
@@ -19,7 +20,8 @@ public class NPCTexts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialog = GameObject.Find("Agent").GetComponent<Dialog>();
+        player = GameObject.Find("Agent");
+        dialog = player.GetComponent<Dialog>();
         controls = new PlayerControls();
         controls.TextControls.Accelerate.performed += Accelerate;
         controls.TextControls.Accelerate.Enable();
@@ -29,14 +31,24 @@ public class NPCTexts : MonoBehaviour
         NPCScript npcscript = talking.GetComponent<NPCScript>();
         head.GetComponent<SpriteRenderer>().sprite = npcscript.headshot;
         textbox = GameObject.Find("NPCText").GetComponent<TextMeshPro>();
+        UpdateText();
         GameObject.Find("NPCNameText").GetComponent<TextMeshPro>().text = talking.name;
         Resize();
     }
     void Accelerate(CallbackContext ctx)
     {
-        dialog.UpdateRow(dialog.current);
-        Instantiate(PlayerText);
-        Destroy(gameObject);
+        bool dashed = dialog.UpdateRow(rows[0]);
+        controls.Disable();
+        if (!dashed)
+        {
+            Instantiate(PlayerText);
+            Destroy(gameObject);
+        }
+        else
+        {
+            player.GetComponent<PlayerMovement>().controls.Enable();
+            Destroy(gameObject);
+        }
         //Select
     }
     void Resize()

@@ -13,6 +13,7 @@ public class Dialog : MonoBehaviour
     {
         if (texts[num, 3].Equals('-'))
         {
+            Debug.Log("true");
             return true;
         }
         current = int.Parse(texts[num, 3]);
@@ -32,14 +33,13 @@ public class Dialog : MonoBehaviour
             texts[i, 2] = split[2];
             texts[i, 3] = split[3];
         }
-        Debug.Log("Activated");
     }
     
     public List<int> group()
     {
         List<int> rows = new List<int>();
         int i = 0;
-        while (i < count && current <= int.Parse(texts[i, 0]))
+        while (i < count && int.Parse(texts[i,0]) <= current)
         {
             if (int.Parse(texts[i,0]) == current)
             {

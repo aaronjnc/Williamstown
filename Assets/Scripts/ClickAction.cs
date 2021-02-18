@@ -8,6 +8,8 @@ public class ClickAction : MonoBehaviour
 {
     public PlayerControls controls;
     WalktoLoc player;
+    GameObject playerobj;
+    PlayerMovement playermove;
     void Start()
     {
         controls = new PlayerControls();
@@ -20,6 +22,9 @@ public class ClickAction : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(mousepos, Vector2.zero);
         if (hit && hit.transform.gameObject.CompareTag("clickable"))
         {
+            playerobj = GameObject.Find("Agent");
+            playermove = playerobj.GetComponent<PlayerMovement>();
+            playermove.controls.Disable();
             GameObject clicked = hit.transform.gameObject;
             Clickinfo info = clicked.GetComponent<Clickinfo>();
             if (info.click != Clickinfo.ClickType.Item && info.click != Clickinfo.ClickType.Talk)
@@ -31,14 +36,13 @@ public class ClickAction : MonoBehaviour
     }
     void WalktoLoc(GameObject clicked, Clickinfo info)
     {
-        player = GameObject.Find("Agent").GetComponent<WalktoLoc>();
+        player = playerobj.GetComponent<WalktoLoc>();
         player.type = info.click;
-        
         if (info.click.Equals(Clickinfo.ClickType.Talk))
         {
-            GameObject.Find("Agent").GetComponent<Dialog>().Activate(clicked);
+            playerobj.GetComponent<Dialog>().Activate(clicked);
             GameObject.Find("GameControl").GetComponent<GameController>().talking = clicked;
-            float relloc = GameObject.Find("Agent").transform.position.x - clicked.transform.position.x;
+            float relloc = playerobj.transform.position.x - clicked.transform.position.x;
             if (relloc > 0)
             {
                 player.loc = clicked.transform.position.x + 1.5f;
