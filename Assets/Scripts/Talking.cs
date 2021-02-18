@@ -6,6 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class Talking : MonoBehaviour
 {
+    GameObject player;
     PlayerControls controls;
     TextMeshPro[] texts = new TextMeshPro[3];
     int highlighted = 0;
@@ -18,7 +19,8 @@ public class Talking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialog = GameObject.Find("Agent").GetComponent<Dialog>();
+        player = GameObject.Find("Agent");
+        dialog = player.GetComponent<Dialog>();
         controls = new PlayerControls();
         texts[0] = GameObject.Find("Text1").GetComponent<TextMeshPro>();
         texts[1] = GameObject.Find("Text2").GetComponent<TextMeshPro>(); ;
@@ -40,9 +42,19 @@ public class Talking : MonoBehaviour
     }
     void Accelerate(CallbackContext ctx)
     {
-        dialog.UpdateRow(rows[highlighted]);
-        Instantiate(NPCText);
-        Destroy(gameObject);
+        bool dashed = dialog.UpdateRow(rows[highlighted]);
+        Debug.Log(dialog.current);
+        controls.Disable();
+        if (!dashed)
+        {
+            Instantiate(NPCText);
+            Destroy(gameObject);
+        }
+        else
+        {
+            player.GetComponent<PlayerMovement>().controls.Enable();
+            Destroy(gameObject);
+        }
         //Select
     }
     void UpdateText()
