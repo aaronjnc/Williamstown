@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public List<Vector2> position = new List<Vector2>();
     public NewScene sceneloader;
     public Clickinfo.ClickType click;
+    public GameObject talking;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

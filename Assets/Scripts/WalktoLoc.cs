@@ -14,6 +14,9 @@ public class WalktoLoc : MonoBehaviour
     public Clickinfo.ClickType type;
     bool lookR = false;
     Sprite sprite;
+    public Object NPCTalk;
+    public Object PlayerTalk;
+    bool stopped = false;
     private void OnEnable()
     {
         sprite = GetComponent<SpriteRenderer>().sprite;
@@ -46,8 +49,9 @@ public class WalktoLoc : MonoBehaviour
         {
             player.position += dir * speed * Time.deltaTime;
         }
-        else
+        else if (!stopped)
         {
+            stopped = true;
             Action();
         }
     }
@@ -59,6 +63,7 @@ public class WalktoLoc : MonoBehaviour
         {
             case Clickinfo.ClickType.Bus:
                 vehicles.SetActive(true);
+                vehicles.GetComponentInChildren<VehicleMovement>().Reload();
                 break;
             case Clickinfo.ClickType.Load:
                 GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
@@ -66,6 +71,15 @@ public class WalktoLoc : MonoBehaviour
             case Clickinfo.ClickType.Reload:
                 GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
                 break;
+            case Clickinfo.ClickType.Talk:
+                Talk();
+                break;
         }
+    }
+    void Talk()
+    {
+        Instantiate(PlayerTalk);
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Find("Background").GetComponent<ClickAction>().enabled = false;
     }
 }

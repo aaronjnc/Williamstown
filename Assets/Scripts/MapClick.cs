@@ -9,6 +9,7 @@ public class MapClick : MonoBehaviour
 {
     PlayerControls control;
     GameController controller;
+    public Sprite explosion;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,16 @@ public class MapClick : MonoBehaviour
     {
         Vector2 mousepos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         RaycastHit2D hit = Physics2D.Raycast(mousepos, Vector2.zero);
-        if (hit && hit.transform.gameObject.name != "Background")
+        if (hit && !hit.transform.gameObject.name.Equals("Background"))
         {
-            NewScene(hit.transform.gameObject.name);
+            if (hit.transform.gameObject.name.Equals("Alderaan"))
+            {
+                hit.transform.gameObject.GetComponent<Animator>().enabled = true;
+            }
+            else
+            {
+                NewScene(hit.transform.gameObject.name);
+            }
         }
     }
     void NewScene(string name)
