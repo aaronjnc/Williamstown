@@ -705,6 +705,10 @@ PrefabInstance:
       propertyPath: headshot
       value: 
       objectReference: {fileID: 21300000, guid: 61864fdb85f8fa04cb61c6e7c8a9975b, type: 3}
+    - target: {fileID: -5382283924013214244, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
+      propertyPath: npcdialog
+      value: 
+      objectReference: {fileID: 4900000, guid: ca6590c51313fad428d89a05b52796fa, type: 3}
     - target: {fileID: 3830367776504014805, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: m_Name
       value: Clark
