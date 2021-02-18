@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPCScript : MonoBehaviour
 {
+    public TextAsset npcdialog;
     public Sprite headshot;
     string name;
     void Start()

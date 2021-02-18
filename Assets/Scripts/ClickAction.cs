@@ -33,8 +33,10 @@ public class ClickAction : MonoBehaviour
     {
         player = GameObject.Find("Agent").GetComponent<WalktoLoc>();
         player.type = info.click;
+        
         if (info.click.Equals(Clickinfo.ClickType.Talk))
         {
+            GameObject.Find("Agent").GetComponent<Dialog>().Activate(clicked);
             GameObject.Find("GameControl").GetComponent<GameController>().talking = clicked;
             float relloc = GameObject.Find("Agent").transform.position.x - clicked.transform.position.x;
             if (relloc > 0)
