@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
         controls.BaseActions.PlayerMovement.canceled += Stop;
         controls.BaseActions.PlayerMovement.Enable();
     }
+    void Update()
+    {
+        player.position += direction * speed * Time.deltaTime;
+    }
     void OnMove(CallbackContext ctx)
     {
         GetComponent<Animator>().enabled = true;
@@ -40,10 +44,5 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<Animator>().runtimeAnimatorController = null;
         GetComponent<Animator>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        player.position += direction*speed*Time.deltaTime;
     }
 }

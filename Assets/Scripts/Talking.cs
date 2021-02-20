@@ -43,7 +43,6 @@ public class Talking : MonoBehaviour
     void Accelerate(CallbackContext ctx)
     {
         bool dashed = dialog.UpdateRow(rows[highlighted]);
-        Debug.Log(dialog.current);
         controls.Disable();
         if (!dashed)
         {
@@ -52,6 +51,7 @@ public class Talking : MonoBehaviour
         }
         else
         {
+            player.GetComponent<PlayerMovement>().enabled = true;
             player.GetComponent<PlayerMovement>().controls.Enable();
             Destroy(gameObject);
         }
