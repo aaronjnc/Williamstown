@@ -46,6 +46,7 @@ public class NPCTexts : MonoBehaviour
         }
         else
         {
+            player.GetComponent<PlayerMovement>().enabled = true;
             player.GetComponent<PlayerMovement>().controls.Enable();
             Destroy(gameObject);
         }

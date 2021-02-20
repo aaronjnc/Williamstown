@@ -11,9 +11,8 @@ public class Dialog : MonoBehaviour
     int count;
     public bool UpdateRow(int num)
     {
-        if (texts[num, 3].Equals('-'))
+        if (!char.IsNumber(texts[num, 3][0]))
         {
-            Debug.Log("true");
             return true;
         }
         current = int.Parse(texts[num, 3]);
