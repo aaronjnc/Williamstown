@@ -1,3 +1,5 @@
-0|0|test1|1
-0|0|test2|-
-1|1|test3|0
+0|0|test npc|1
+0|0|test stay|2
+0|0|test leave|-
+1|1|test return 1|0
+2|0|test return 2|0

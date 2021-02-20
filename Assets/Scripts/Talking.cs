@@ -43,19 +43,26 @@ public class Talking : MonoBehaviour
     void Accelerate(CallbackContext ctx)
     {
         bool dashed = dialog.UpdateRow(rows[highlighted]);
-        controls.Disable();
         if (!dashed)
         {
-            Instantiate(NPCText);
-            Destroy(gameObject);
+            if (dialog.Character(dialog.group()).Equals(1))
+            {
+                controls.Disable();
+                Instantiate(NPCText);
+                Destroy(gameObject);
+            }
+            else
+            {
+                UpdateText();
+            }
         }
         else
         {
+            controls.Disable();
             player.GetComponent<PlayerMovement>().enabled = true;
             player.GetComponent<PlayerMovement>().controls.Enable();
             Destroy(gameObject);
         }
-        //Select
     }
     void UpdateText()
     {
@@ -63,11 +70,14 @@ public class Talking : MonoBehaviour
         max = rows.Count;
         for (int i = 0; i < max; i++)
         {
-            texts[i].text = dialog.texts[i, 2];
+            texts[i].text = dialog.texts[rows[i], 2];
         }
         for (int i = max; i < 3; i++)
         {
             texts[i].text = "";
         }
+        texts[0].color = highlightcolor;
+        texts[highlighted].color = basecolor;
+        highlighted = 0;
     }
 }

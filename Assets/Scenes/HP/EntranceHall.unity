@@ -205,7 +205,7 @@ Transform:
   m_LocalScale: {x: 1.35, y: 1.35, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &131899287
 MonoBehaviour:
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.597178
+      value: -7.88
       objectReference: {fileID: 0}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalPosition.y
@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1104b6b0b318edc4ca64517c6d8548a8, type: 3}
     - target: {fileID: 3830367776504014805, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: Hermione
       objectReference: {fileID: 0}
     - target: {fileID: 3830367776504014827, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -592,6 +592,10 @@ PrefabInstance:
     - target: {fileID: 2588244621395775501, guid: a0ab5447f93d8f042a633568633ad678, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588244621395775502, guid: a0ab5447f93d8f042a633568633ad678, type: 3}
+      propertyPath: left
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2588244621535529019, guid: a0ab5447f93d8f042a633568633ad678, type: 3}
       propertyPath: m_Name
