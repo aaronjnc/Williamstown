@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class VehicleMovement : MonoBehaviour
 {
     public GameObject agent;
@@ -19,7 +20,7 @@ public class VehicleMovement : MonoBehaviour
     Vector3 startpos;
     Vector2 size;
     bool done = false;
-    void Start()
+    private void Awake()
     {
         startpos = transform.position;
         vehicle = GetComponent<Rigidbody2D>();

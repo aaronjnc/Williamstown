@@ -109,4 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28a378ac25be794b8e89b4000a55223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcdialog: {fileID: 4900000, guid: ca6590c51313fad428d89a05b52796fa, type: 3}
   headshot: {fileID: 0}

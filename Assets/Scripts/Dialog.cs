@@ -48,4 +48,8 @@ public class Dialog : MonoBehaviour
         }
         return rows;
     }
+    public int Character(List<int> rows)
+    {
+        return int.Parse(texts[rows[0],1]);
+    }
 }

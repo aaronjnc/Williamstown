@@ -58,6 +58,7 @@ public class WalktoLoc : MonoBehaviour
     void Action()
     {
         this.enabled = false;
+        stopped = false;
         GetComponent<Animator>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
         switch(type)

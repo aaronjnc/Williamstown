@@ -38,14 +38,22 @@ public class NPCTexts : MonoBehaviour
     void Accelerate(CallbackContext ctx)
     {
         bool dashed = dialog.UpdateRow(rows[0]);
-        controls.Disable();
         if (!dashed)
         {
-            Instantiate(PlayerText);
-            Destroy(gameObject);
+            if (dialog.Character(dialog.group()).Equals(0))
+            {
+                controls.Disable();
+                Instantiate(PlayerText);
+                Destroy(gameObject);
+            }
+            else
+            {
+                UpdateText();
+            }
         }
         else
         {
+            controls.Disable();
             player.GetComponent<PlayerMovement>().enabled = true;
             player.GetComponent<PlayerMovement>().controls.Enable();
             Destroy(gameObject);

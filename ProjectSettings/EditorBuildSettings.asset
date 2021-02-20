@@ -92,4 +92,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HP/Weasleys.unity
     guid: 07028301b1b858345be76c7997f860fe
+  - enabled: 1
+    path: Assets/Scenes/JP/VisitorCenterInt.unity
+    guid: 6424fd00a126aec4c958aa7720987a4b
+  - enabled: 1
+    path: Assets/Scenes/Maps/IJMap.unity
+    guid: afa6b167782c071479d3c813ad6443cc
+  - enabled: 1
+    path: Assets/Scenes/IJ/Woolleys.unity
+    guid: 9a2df1780cd685d408a3aba8fffb3b51
   m_configObjects: {}
