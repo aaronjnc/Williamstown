@@ -13,6 +13,7 @@ public class SceneLoad : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Agent");
+        gameObject.GetComponent<ClickAction>().enabled = true;
         if (GameObject.Find("GameControl") != null)
         {
             controller = GameObject.Find("GameControl").GetComponent<GameController>();
