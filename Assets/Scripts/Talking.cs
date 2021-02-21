@@ -58,6 +58,7 @@ public class Talking : MonoBehaviour
         }
         else
         {
+            GameObject.Find("Background").GetComponent<ClickAction>().enabled = true;
             controls.Disable();
             player.GetComponent<PlayerMovement>().enabled = true;
             player.GetComponent<PlayerMovement>().controls.Enable();
