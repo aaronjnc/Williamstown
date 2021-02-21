@@ -82,6 +82,6 @@ public class WalktoLoc : MonoBehaviour
     {
         Instantiate(PlayerTalk);
         gameObject.GetComponent<PlayerMovement>().enabled = false;
-        GameObject.Find("Background").GetComponent<ClickAction>().enabled = false;
+        GameObject.Find("Background").GetComponent<ClickAction>().canclick = false;
     }
 }

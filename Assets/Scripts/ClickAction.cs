@@ -10,6 +10,7 @@ public class ClickAction : MonoBehaviour
     WalktoLoc player;
     GameObject playerobj;
     PlayerMovement playermove;
+    public bool canclick = true;
     void Start()
     {
         controls = new PlayerControls();
@@ -18,20 +19,23 @@ public class ClickAction : MonoBehaviour
     }
     void OnClick(CallbackContext ctx)
     {
-        Vector2 mousepos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        RaycastHit2D hit = Physics2D.Raycast(mousepos, Vector2.zero);
-        if (hit && hit.transform.gameObject.CompareTag("clickable"))
+        if (canclick)
         {
-            playerobj = GameObject.Find("Agent");
-            playermove = playerobj.GetComponent<PlayerMovement>();
-            playermove.controls.Disable();
-            GameObject clicked = hit.transform.gameObject;
-            Clickinfo info = clicked.GetComponent<Clickinfo>();
-            if (info.click != Clickinfo.ClickType.Item && info.click != Clickinfo.ClickType.Talk)
+            Vector2 mousepos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            RaycastHit2D hit = Physics2D.Raycast(mousepos, Vector2.zero);
+            if (hit && hit.transform.gameObject.CompareTag("clickable"))
             {
-                NewScene(clicked);
+                playerobj = GameObject.Find("Agent");
+                playermove = playerobj.GetComponent<PlayerMovement>();
+                playermove.controls.Disable();
+                GameObject clicked = hit.transform.gameObject;
+                Clickinfo info = clicked.GetComponent<Clickinfo>();
+                if (info.click != Clickinfo.ClickType.Item && info.click != Clickinfo.ClickType.Talk)
+                {
+                    NewScene(clicked);
+                }
+                WalktoLoc(clicked, info);
             }
-            WalktoLoc(clicked, info);
         }
     }
     void WalktoLoc(GameObject clicked, Clickinfo info)
