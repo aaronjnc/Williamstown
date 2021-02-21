@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1602439121536020210, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
+      propertyPath: vehicles
+      value: 
+      objectReference: {fileID: 1662696157}
     - target: {fileID: 5472229284670271311, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.67
@@ -401,6 +405,14 @@ PrefabInstance:
       propertyPath: agent
       value: 
       objectReference: {fileID: 716115551}
+    - target: {fileID: 6867037233692639076, guid: 1db5f4bb09039ce4c800e698efb2d9a4, type: 3}
+      propertyPath: startdir.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6867037233692639076, guid: 1db5f4bb09039ce4c800e698efb2d9a4, type: 3}
+      propertyPath: enddir.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6867037233692639078, guid: 1db5f4bb09039ce4c800e698efb2d9a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -420,6 +432,10 @@ PrefabInstance:
     - target: {fileID: 6867037233692639079, guid: 1db5f4bb09039ce4c800e698efb2d9a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6867037233692639079, guid: 1db5f4bb09039ce4c800e698efb2d9a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6867037233692639082, guid: 1db5f4bb09039ce4c800e698efb2d9a4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
