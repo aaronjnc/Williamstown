@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 289742647}
   - component: {fileID: 289742646}
   m_Layer: 0
-  m_Name: Orchestra
+  m_Name: Weasleys
   m_TagString: clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a2b19543ed0be40b9b2290918d9cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canclick: 1
 --- !u!61 &2142329096
 BoxCollider2D:
   m_ObjectHideFlags: 0

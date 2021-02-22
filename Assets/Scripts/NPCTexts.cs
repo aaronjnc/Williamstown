@@ -11,12 +11,14 @@ public class NPCTexts : MonoBehaviour
     public Object PlayerText;
     PlayerControls controls;
     Vector2 picsize;
-    GameObject head;
-    GameObject talking;
+    SpriteRenderer head;
     TextAsset npcdialog;
     TextMeshPro textbox;
     Dialog dialog;
     List<int> rows = new List<int>();
+    List<GameObject> talking;
+    TextMeshPro name;
+    List<NPCScript> npcscripts;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,22 +27,26 @@ public class NPCTexts : MonoBehaviour
         controls = new PlayerControls();
         controls.TextControls.Accelerate.performed += Accelerate;
         controls.TextControls.Accelerate.Enable();
-        head = GameObject.Find("NPCHead");
-        picsize = head.GetComponent<SpriteRenderer>().bounds.size;
-        talking = GameObject.Find("GameControl").GetComponent<GameController>().talking;
-        NPCScript npcscript = talking.GetComponent<NPCScript>();
-        head.GetComponent<SpriteRenderer>().sprite = npcscript.headshot;
+        head = GameObject.Find("NPCHead").GetComponent<SpriteRenderer>();
+        picsize = head.bounds.size;
+        talking.Add(GameObject.Find("GameControl").GetComponent<GameController>().talking);
+        npcscripts.Add(talking[0].GetComponent<NPCScript>());
+        npcscripts.Add(talking[1].GetComponent<NPCScript>());
+        talking.Add(npcscripts[0].othernpc);
+        head.sprite = npcscripts[0].headshot;
         textbox = GameObject.Find("NPCText").GetComponent<TextMeshPro>();
         UpdateText();
-        GameObject.Find("NPCNameText").GetComponent<TextMeshPro>().text = talking.name;
+        name = GameObject.Find("NPCNameText").GetComponent<TextMeshPro>();
+        name.text = talking[0].name;
         Resize();
     }
     void Accelerate(CallbackContext ctx)
     {
         bool dashed = dialog.UpdateRow(rows[0]);
+        int character = dialog.Character(dialog.group());
         if (!dashed)
         {
-            if (dialog.Character(dialog.group()).Equals(0))
+            if (character.Equals(0))
             {
                 controls.Disable();
                 Instantiate(PlayerText);
@@ -48,6 +54,7 @@ public class NPCTexts : MonoBehaviour
             }
             else
             {
+                UpdateName(character-1);
                 UpdateText();
             }
         }
@@ -72,5 +79,11 @@ public class NPCTexts : MonoBehaviour
     {
         rows = dialog.group();
         textbox.text = dialog.texts[rows[0], 2];
+    }
+    void UpdateName(int i)
+    {
+        name.text = talking[i].name;
+        head.sprite = npcscripts[i].headshot;
+        Resize();
     }
 }

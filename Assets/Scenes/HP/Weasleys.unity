@@ -332,6 +332,14 @@ PrefabInstance:
       propertyPath: headshot
       value: 
       objectReference: {fileID: 21300000, guid: 6ffc97c16ab3d9f458558c5c6a6b9bb6, type: 3}
+    - target: {fileID: -5382283924013214244, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
+      propertyPath: othernpc
+      value: 
+      objectReference: {fileID: 1684718103}
+    - target: {fileID: -5382283924013214244, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
+      propertyPath: first
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3830367776504014804, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -497,6 +505,10 @@ PrefabInstance:
       propertyPath: headshot
       value: 
       objectReference: {fileID: 21300000, guid: 92c3b6bfcea2a1148b0dfe1938b22053, type: 3}
+    - target: {fileID: -5382283924013214244, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
+      propertyPath: othernpc
+      value: 
+      objectReference: {fileID: 757254064}
     - target: {fileID: 3830367776504014804, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: m_Sprite
       value: 
