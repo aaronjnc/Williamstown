@@ -6,13 +6,15 @@ public class NPCScript : MonoBehaviour
 {
     public TextAsset npcdialog;
     public Sprite headshot;
-    string name;
+    string npcname;
+    public GameObject othernpc;
+    public bool first = true;
     void Start()
     {
-        name = gameObject.name;
+        npcname = gameObject.name;
     }
     public string GetName()
     {
-        return name;
+        return npcname;
     }
 }
