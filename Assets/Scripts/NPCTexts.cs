@@ -16,9 +16,9 @@ public class NPCTexts : MonoBehaviour
     TextMeshPro textbox;
     Dialog dialog;
     List<int> rows = new List<int>();
-    List<GameObject> talking;
+    List<GameObject> talking = new List<GameObject>();
     TextMeshPro name;
-    List<NPCScript> npcscripts;
+    List<NPCScript> npcscripts = new List<NPCScript>();
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +29,14 @@ public class NPCTexts : MonoBehaviour
         controls.TextControls.Accelerate.Enable();
         head = GameObject.Find("NPCHead").GetComponent<SpriteRenderer>();
         picsize = head.bounds.size;
-        talking.Add(GameObject.Find("GameControl").GetComponent<GameController>().talking);
+        GameObject gamecontrol = GameObject.Find("GameControl");
+        talking.Add(gamecontrol.GetComponent<GameController>().talking);
         npcscripts.Add(talking[0].GetComponent<NPCScript>());
-        npcscripts.Add(talking[1].GetComponent<NPCScript>());
-        talking.Add(npcscripts[0].othernpc);
+        if (npcscripts[0].othernpc != null)
+        {
+            talking.Add(npcscripts[0].othernpc);
+            npcscripts.Add(talking[1].GetComponent<NPCScript>());
+        }
         head.sprite = npcscripts[0].headshot;
         textbox = GameObject.Find("NPCText").GetComponent<TextMeshPro>();
         UpdateText();

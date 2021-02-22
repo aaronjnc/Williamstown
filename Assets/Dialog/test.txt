@@ -2,7 +2,7 @@
 0|0|test stay|2
 0|0|test leave|-
 1|1|test return 1|3
-3|1|test other npc|3
 2|0|test return 2|0
+3|1|test other npc|4
 4|2|test original npc|5
 5|1|return to player|0
