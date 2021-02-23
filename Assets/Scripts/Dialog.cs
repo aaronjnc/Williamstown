@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class Dialog : MonoBehaviour
     public string[,] texts;
     public int current;
     int count;
+    public Sprite journalnotif;
+    Image journal;
+    private void Awake()
+    {
+        journal = GameObject.Find("Journal").GetComponent<Image>();
+    }
     public bool UpdateRow(int num)
     {
+        NewMission(num);
         if (!char.IsNumber(texts[num, 3][0]))
         {
             return true;
@@ -23,17 +31,24 @@ public class Dialog : MonoBehaviour
         dialog = character.GetComponent<NPCScript>().npcdialog;
         string[] dialogs = dialog.text.Split('\n');
         count = dialogs.Length;
-        texts = new string[count, 4];
+        texts = new string[count, 5];
         for (int i = 0; i < count; i++)
         {
             string[] split = dialogs[i].Split('|');
-            texts[i, 0] = split[0];
-            texts[i, 1] = split[1];
-            texts[i, 2] = split[2];
-            texts[i, 3] = split[3];
+            for (int j = 0; j < split.Length;j++)
+            {
+                texts[i, j] = split[j];
+            }
         }
     }
-    
+    void NewMission(int num)
+    {
+        if (!int.Parse(texts[num,4]).Equals(0))
+        {
+            journal.sprite = journalnotif;
+            //add mission to active mission list
+        }
+    }
     public List<int> group()
     {
         List<int> rows = new List<int>();

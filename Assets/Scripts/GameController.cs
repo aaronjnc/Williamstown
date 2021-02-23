@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public NewScene sceneloader;
     public Clickinfo.ClickType click;
     public GameObject talking;
+    public GameObject UI;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

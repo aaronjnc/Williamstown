@@ -199,3 +199,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current: 0
+  journalnotif: {fileID: 21300000, guid: f9166ccb57a1b5e44a1ea130d5de4480, type: 3}
