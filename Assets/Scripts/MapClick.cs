@@ -10,6 +10,7 @@ public class MapClick : MonoBehaviour
     PlayerControls control;
     GameController controller;
     public Sprite explosion;
+    public bool busload = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +37,16 @@ public class MapClick : MonoBehaviour
     }
     void NewScene(string name)
     {
-        controller.bus = true;
-        controller.position.Clear();
+        if (busload)
+        {
+            controller.bus = true;
+            controller.position.Clear();
+        }
+        else
+        {
+            controller.bus = false;
+            controller.click = Clickinfo.ClickType.Reload;
+        }
         control.Disable();
         SceneManager.LoadScene(name);
     }

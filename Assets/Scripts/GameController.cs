@@ -10,6 +10,10 @@ public class GameController : MonoBehaviour
     public Clickinfo.ClickType click;
     public GameObject talking;
     public GameObject UI;
+    public List<int> missions;
+    public string previous;
+    GameObject agent;
+    GameObject background;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
