@@ -12,9 +12,11 @@ public class Dialog : MonoBehaviour
     int count;
     public Sprite journalnotif;
     Image journal;
+    GameController controller;
     private void Awake()
     {
         journal = GameObject.Find("Journal").GetComponent<Image>();
+        controller = GameObject.Find("GameControl").GetComponent<GameController>();
     }
     public bool UpdateRow(int num)
     {
@@ -46,7 +48,7 @@ public class Dialog : MonoBehaviour
         if (!int.Parse(texts[num,4]).Equals(0))
         {
             journal.sprite = journalnotif;
-            //add mission to active mission list
+            controller.missions.Add(int.Parse(texts[num, 4]) - 1);
         }
     }
     public List<int> group()
