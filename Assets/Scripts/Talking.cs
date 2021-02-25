@@ -23,8 +23,8 @@ public class Talking : MonoBehaviour
         dialog = player.GetComponent<Dialog>();
         controls = new PlayerControls();
         texts[0] = GameObject.Find("Text1").GetComponent<TextMeshPro>();
-        texts[1] = GameObject.Find("Text2").GetComponent<TextMeshPro>(); ;
-        texts[2] = GameObject.Find("Text3").GetComponent<TextMeshPro>(); ;
+        texts[1] = GameObject.Find("Text2").GetComponent<TextMeshPro>();
+        texts[2] = GameObject.Find("Text3").GetComponent<TextMeshPro>();
         basecolor = texts[0].GetComponent<TextMeshPro>().color;
         highlightcolor = new Color(139, 0, 0);
         controls.TextControls.Switch.performed += Switch;

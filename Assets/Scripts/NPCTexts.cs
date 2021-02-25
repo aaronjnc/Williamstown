@@ -69,7 +69,6 @@ public class NPCTexts : MonoBehaviour
             player.GetComponent<PlayerMovement>().controls.Enable();
             Destroy(gameObject);
         }
-        //Select
     }
     void Resize()
     {
