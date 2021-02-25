@@ -45,10 +45,10 @@ public class Dialog : MonoBehaviour
     }
     void NewMission(int num)
     {
-        if (!int.Parse(texts[num,4]).Equals(0))
+        if (char.IsNumber(texts[num,4][0]))
         {
             journal.sprite = journalnotif;
-            controller.missions.Add(int.Parse(texts[num, 4]) - 1);
+            controller.missions.Add(int.Parse(texts[num, 4]));
         }
     }
     public List<int> group()
