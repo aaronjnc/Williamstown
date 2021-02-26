@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public GameObject UI;
     public List<int> missions;
     public string previous;
+    public List<int> items;
     GameObject agent;
     GameObject background;
     void Awake()

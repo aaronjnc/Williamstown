@@ -42,7 +42,7 @@ public class ClickAction : MonoBehaviour
     {
         player = playerobj.GetComponent<WalktoLoc>();
         player.type = info.click;
-        if (info.click.Equals(Clickinfo.ClickType.Talk))
+        if (player.type.Equals(Clickinfo.ClickType.Talk))
         {
             playerobj.GetComponent<Dialog>().Activate(clicked);
             GameObject.Find("GameControl").GetComponent<GameController>().talking = clicked;
@@ -57,7 +57,10 @@ public class ClickAction : MonoBehaviour
             }
         }
         else
+        {
             player.loc = clicked.transform.position.x;
+            player.item =clicked;        
+        }
         player.enabled = true;
     }
     void NewScene(GameObject clicked)
