@@ -59,7 +59,7 @@ public class ClickAction : MonoBehaviour
         else
         {
             player.loc = clicked.transform.position.x;
-            player.item =clicked;        
+            player.item =clicked;
         }
         player.enabled = true;
     }

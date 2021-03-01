@@ -67,6 +67,7 @@ public class VehicleMovement : MonoBehaviour
         if (!empty)
         {
             agent.SetActive(true);
+            GameObject.Find("UIObject").GetComponentInChildren<UIClick>().NewScene();
             vehiclerenderer.sprite = emptyvehicle;
         }
         else

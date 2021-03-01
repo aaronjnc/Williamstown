@@ -92,6 +92,7 @@ public class WalktoLoc : MonoBehaviour
     }
     void Item()
     {
+        Destroy(item);
         controller.items.Add(item.GetComponent<ItemInfo>().itemnum);
     }
 }

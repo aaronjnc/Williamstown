@@ -706,6 +706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent
       objectReference: {fileID: 0}
+    - target: {fileID: 1602439121536020204, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1602439121536020210, guid: 380c938af398ce94eba43dc4f8aa7538, type: 3}
       propertyPath: vehicles
       value: 

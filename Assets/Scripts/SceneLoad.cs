@@ -29,5 +29,9 @@ public class SceneLoad : MonoBehaviour
                 controller.position.RemoveAt(controller.position.Count - 1);
             }
         }
+        if (!controller.bus)
+        {
+            GameObject.Find("UIObject").GetComponentInChildren<UIClick>().NewScene();
+        }
     }
 }

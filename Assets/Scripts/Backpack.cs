@@ -7,7 +7,7 @@ public class Backpack : MonoBehaviour
     GameController gamecontrol;
     Sprite[] items;
     public GameObject box;
-    List<GameObject> boxes;
+    List<GameObject> boxes = new List<GameObject>();
     float xpos = -7.3f;
     float ypos = 2.7f;
     float ydif = .7f;
@@ -18,7 +18,12 @@ public class Backpack : MonoBehaviour
         GameObject exit = GameObject.Find("Exit");
         gamecontrol = GameObject.Find("GameControl").GetComponent<GameController>();
         exit.name = gamecontrol.previous;
-        items = (Sprite[])Resources.LoadAll("Items",typeof(Sprite));
+        Object[] loadedimg = Resources.LoadAll("Items",typeof(Sprite));
+        items = new Sprite[loadedimg.Length];
+        for(int i = 0; i < loadedimg.Length;i++)
+        {
+            items[i] = (Sprite)loadedimg[i];
+        }
         for (int i = 0; i < gamecontrol.items.Count;i++)
         {
             CreateBox(gamecontrol.items[i]);
@@ -26,8 +31,8 @@ public class Backpack : MonoBehaviour
     }
     void CreateBox(int i)
     {
-        int current = boxes.Count - 1;
         boxes.Add(Instantiate(box));
+        int current = boxes.Count - 1;
         float x = xpos + xdif * (current % 6);
         float y = ypos - ydif * (int)((boxes.Count - 1) / 6);
         boxes[current].transform.position = new Vector2(x, y);
