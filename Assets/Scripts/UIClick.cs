@@ -18,6 +18,7 @@ public class UIClick : MonoBehaviour, IPointerDownHandler
         {
             clicked.GetComponent<Image>().sprite = journal;
         }
+        agentpos = agent.transform.position;
         controller.position.Add(agentpos);
         controller.previous = SceneManager.GetActiveScene().name;
         agent.GetComponent<PlayerMovement>().controls.Disable();
