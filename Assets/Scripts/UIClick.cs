@@ -11,6 +11,23 @@ public class UIClick : MonoBehaviour, IPointerDownHandler
     public Sprite journal;
     GameObject agent;
     Vector2 agentpos;
+    private static UIClick _instance;
+    private static UIClick Instance => _instance;
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject.transform.parent.gameObject);
+    }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject.transform.parent.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         GameObject clicked = eventData.pointerCurrentRaycast.gameObject;
@@ -30,6 +47,5 @@ public class UIClick : MonoBehaviour, IPointerDownHandler
         controller = GameObject.Find("GameControl").GetComponent<GameController>();
         agent = GameObject.FindGameObjectWithTag("Player");
         agentpos = agent.transform.position;
-        DontDestroyOnLoad(gameObject.transform.parent.gameObject);
     }
 }

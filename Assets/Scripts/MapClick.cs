@@ -11,9 +11,12 @@ public class MapClick : MonoBehaviour
     GameController controller;
     public Sprite explosion;
     public bool busload = true;
+    GameObject UI;
     // Start is called before the first frame update
     void Start()
     {
+        UI = GameObject.Find("UIObject");
+        UI.SetActive(false);
         controller = GameObject.Find("GameControl").GetComponent<GameController>();
         control = new PlayerControls();
         control.BaseActions.Click.performed += OnClick;
@@ -48,6 +51,7 @@ public class MapClick : MonoBehaviour
             controller.click = Clickinfo.ClickType.Reload;
         }
         control.Disable();
+        UI.SetActive(true);
         SceneManager.LoadScene(name);
     }
 }

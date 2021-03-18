@@ -15,8 +15,18 @@ public class GameController : MonoBehaviour
     public List<int> items;
     GameObject agent;
     GameObject background;
+    private static GameController _instance;
+    private static GameController Instance => _instance;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 }
