@@ -17,8 +17,11 @@ public class WalktoLoc : MonoBehaviour
     public Object NPCTalk;
     public Object PlayerTalk;
     bool stopped = false;
+    public GameObject item;
+    GameController controller;
     private void OnEnable()
     {
+        controller = GameObject.Find("GameControl").GetComponent<GameController>();
         sprite = GetComponent<SpriteRenderer>().sprite;
         player = GetComponent<Rigidbody2D>();
         PlayerMovement movement = gameObject.GetComponent<PlayerMovement>();
@@ -68,13 +71,16 @@ public class WalktoLoc : MonoBehaviour
                 vehicles.GetComponentInChildren<VehicleMovement>().Reload();
                 break;
             case Clickinfo.ClickType.Load:
-                GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
+                controller.sceneloader.LoadScene();
                 break;
             case Clickinfo.ClickType.Reload:
-                GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
+                controller.sceneloader.LoadScene();
                 break;
             case Clickinfo.ClickType.Talk:
                 Talk();
+                break;
+            case Clickinfo.ClickType.Item:
+                Item();
                 break;
         }
     }
@@ -83,5 +89,10 @@ public class WalktoLoc : MonoBehaviour
         Instantiate(PlayerTalk);
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         GameObject.Find("Background").GetComponent<ClickAction>().canclick = false;
+    }
+    void Item()
+    {
+        Destroy(item);
+        controller.items.Add(item.GetComponent<ItemInfo>().itemnum);
     }
 }

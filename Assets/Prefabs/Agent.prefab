@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4908931491233722880}
   m_Layer: 0
   m_Name: Agent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   type: 0
   NPCTalk: {fileID: 6118847982994003441, guid: 17f86a8fad793084ea0adc6fa0139c99, type: 3}
   PlayerTalk: {fileID: 1111258804353713069, guid: 278d93886d4579b4d9135e3dc8a302ff, type: 3}
+  item: {fileID: 0}
 --- !u!61 &993544537298450013
 BoxCollider2D:
   m_ObjectHideFlags: 0
