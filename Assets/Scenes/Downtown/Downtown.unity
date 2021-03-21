@@ -442,6 +442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 616672701492846354, guid: 5cccd9c8cc7bdc14bb28444e4c9761a0, type: 3}
+      propertyPath: journal
+      value: 
+      objectReference: {fileID: 21300000, guid: c5f1ff2aca58eb94aa31b7f1e12852d4, type: 3}
     - target: {fileID: 616672702216285705, guid: 5cccd9c8cc7bdc14bb28444e4c9761a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.2356734
@@ -774,7 +778,7 @@ PrefabInstance:
     - target: {fileID: -5382283924013214244, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: npcdialog
       value: 
-      objectReference: {fileID: 4900000, guid: ca6590c51313fad428d89a05b52796fa, type: 3}
+      objectReference: {fileID: 4900000, guid: 6ef8da7643df2504b83efe8fbe7fa076, type: 3}
     - target: {fileID: 3830367776504014805, guid: f77fbbf1f3d08d141abcd6c853fff55c, type: 3}
       propertyPath: m_Name
       value: Clark

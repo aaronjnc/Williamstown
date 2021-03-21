@@ -39,7 +39,7 @@ public class Dialog : MonoBehaviour
             string[] split = dialogs[i].Split('|');
             for (int j = 0; j < split.Length;j++)
             {
-                texts[i, j] = split[j];
+                texts[i, j] = split[j].Trim();
             }
         }
     }
@@ -49,6 +49,10 @@ public class Dialog : MonoBehaviour
         {
             journal.sprite = journalnotif;
             controller.missions.Add(int.Parse(texts[num, 4]));
+        }
+        else if (texts[num,4].Length != 1)
+        {
+            controller.missions.Remove(int.Parse(texts[num, 4][1].ToString()));
         }
     }
     public List<int> group()
