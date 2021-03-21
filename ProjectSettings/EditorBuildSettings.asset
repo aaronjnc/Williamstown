@@ -107,4 +107,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Journal.unity
     guid: adc366312173c5f4c86b3b2739fdb3c8
+  - enabled: 1
+    path: Assets/Scenes/HP/Gringotts.unity
+    guid: 8c2be10808463004da337c7bb94ee6af
   m_configObjects: {}
