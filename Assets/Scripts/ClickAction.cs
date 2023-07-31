@@ -69,4 +69,9 @@ public class ClickAction : MonoBehaviour
         load.LoadType(clicked.GetComponent<Clickinfo>().click, clicked.name,clicked.transform.position);
         GameObject.Find("GameControl").GetComponent<GameController>().sceneloader = load;
     }
+
+    private void OnDestroy()
+    {
+        controls.BaseActions.Disable();
+    }
 }
