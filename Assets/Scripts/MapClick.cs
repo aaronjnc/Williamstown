@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MapClick : MonoBehaviour
 {
     PlayerControls control;
-    GameController controller;
+    GameManager controller;
     public Sprite explosion;
     public bool busload = true;
     GameObject UI;
@@ -17,7 +17,7 @@ public class MapClick : MonoBehaviour
     {
         UI = GameObject.Find("UIObject");
         UI.SetActive(false);
-        controller = GameObject.Find("GameControl").GetComponent<GameController>();
+        controller = GameObject.Find("GameControl").GetComponent<GameManager>();
         control = new PlayerControls();
         control.BaseActions.Click.performed += OnClick;
         control.BaseActions.Click.Enable();

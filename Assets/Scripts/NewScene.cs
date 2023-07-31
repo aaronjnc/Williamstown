@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class NewScene : MonoBehaviour
 {
     GameObject player;
-    GameController controller;
+    GameManager controller;
     string newscene;
     void Awake()
     {
-        controller = GameObject.Find("GameControl").GetComponent<GameController>();
+        controller = GameObject.Find("GameControl").GetComponent<GameManager>();
         player = GameObject.Find("Agent");
     }
     public void LoadType(Clickinfo.ClickType click, string scene, Vector2 pos)

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoad : MonoBehaviour
 {
-    GameController controller;
+    GameManager controller;
     GameObject player;
     public GameObject vehicle;
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class SceneLoad : MonoBehaviour
         gameObject.GetComponent<ClickAction>().enabled = true;
         if (GameObject.Find("GameControl") != null)
         {
-            controller = GameObject.Find("GameControl").GetComponent<GameController>();
+            controller = GameObject.Find("GameControl").GetComponent<GameManager>();
             if (controller.bus)
             {
                 player.SetActive(false);

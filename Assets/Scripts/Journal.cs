@@ -7,7 +7,7 @@ public class Journal : MonoBehaviour
     public TextAsset mission;
     public GameObject missionlines;
     List<string> missions = new List<string>();
-    GameController gamecontrol;
+    GameManager gamecontrol;
     List<GameObject> lines = new List<GameObject>();
     public float xpos = -6.17f;
     public float ypos = 3.87f;
@@ -15,7 +15,7 @@ public class Journal : MonoBehaviour
     void Start()
     {
         GameObject exit = GameObject.Find("Exit");
-        gamecontrol = GameObject.Find("GameControl").GetComponent<GameController>();
+        gamecontrol = GameObject.Find("GameControl").GetComponent<GameManager>();
         exit.name = gamecontrol.previous;
         string[] texts = mission.text.Split('\n');
         missions = new List<string>(texts);

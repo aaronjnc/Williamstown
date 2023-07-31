@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIClick : MonoBehaviour, IPointerDownHandler
 {
-    GameController controller;
+    GameManager controller;
     public Sprite journal;
     GameObject agent;
     Vector2 agentpos;
@@ -44,7 +44,7 @@ public class UIClick : MonoBehaviour, IPointerDownHandler
     }
     public void NewScene()
     {
-        controller = GameObject.Find("GameControl").GetComponent<GameController>();
+        controller = GameObject.Find("GameControl").GetComponent<GameManager>();
         agent = GameObject.FindGameObjectWithTag("Player");
         agentpos = agent.transform.position;
     }

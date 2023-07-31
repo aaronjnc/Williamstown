@@ -45,7 +45,7 @@ public class ClickAction : MonoBehaviour
         if (player.type.Equals(Clickinfo.ClickType.Talk))
         {
             playerobj.GetComponent<Dialog>().Activate(clicked);
-            GameObject.Find("GameControl").GetComponent<GameController>().talking = clicked;
+            GameObject.Find("GameControl").GetComponent<GameManager>().talking = clicked;
             float relloc = playerobj.transform.position.x - clicked.transform.position.x;
             if (relloc > 0)
             {
@@ -67,7 +67,7 @@ public class ClickAction : MonoBehaviour
     {
         NewScene load = gameObject.AddComponent<NewScene>();
         load.LoadType(clicked.GetComponent<Clickinfo>().click, clicked.name,clicked.transform.position);
-        GameObject.Find("GameControl").GetComponent<GameController>().sceneloader = load;
+        GameObject.Find("GameControl").GetComponent<GameManager>().sceneloader = load;
     }
 
     private void OnDestroy()

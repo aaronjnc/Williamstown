@@ -30,7 +30,7 @@ public class NPCTexts : MonoBehaviour
         head = GameObject.Find("NPCHead").GetComponent<SpriteRenderer>();
         picsize = head.bounds.size;
         GameObject gamecontrol = GameObject.Find("GameControl");
-        talking.Add(gamecontrol.GetComponent<GameController>().talking);
+        talking.Add(gamecontrol.GetComponent<GameManager>().talking);
         npcscripts.Add(talking[0].GetComponent<NPCScript>());
         if (npcscripts[0].othernpc != null)
         {
