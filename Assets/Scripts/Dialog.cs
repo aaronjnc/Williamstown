@@ -12,11 +12,11 @@ public class Dialog : MonoBehaviour
     int count;
     public Sprite journalnotif;
     Image journal;
-    GameController controller;
+    GameManager controller;
     private void Awake()
     {
         journal = GameObject.Find("Journal").GetComponent<Image>();
-        controller = GameObject.Find("GameControl").GetComponent<GameController>();
+        controller = GameObject.Find("GameControl").GetComponent<GameManager>();
     }
     public bool UpdateRow(int num)
     {

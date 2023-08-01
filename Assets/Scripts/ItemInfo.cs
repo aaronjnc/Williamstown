@@ -7,7 +7,7 @@ public class ItemInfo : MonoBehaviour
     public int itemnum = 0;
     private void Start()
     {
-        GameController controller = GameObject.Find("GameControl").GetComponent<GameController>();
+        GameManager controller = GameObject.Find("GameControl").GetComponent<GameManager>();
         if (controller.items.Contains(itemnum))
         {
             Destroy(gameObject);

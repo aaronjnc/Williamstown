@@ -18,10 +18,10 @@ public class WalktoLoc : MonoBehaviour
     public Object PlayerTalk;
     bool stopped = false;
     public GameObject item;
-    GameController controller;
+    GameManager controller;
     private void OnEnable()
     {
-        controller = GameObject.Find("GameControl").GetComponent<GameController>();
+        controller = GameObject.Find("GameControl").GetComponent<GameManager>();
         sprite = GetComponent<SpriteRenderer>().sprite;
         player = GetComponent<Rigidbody2D>();
         PlayerMovement movement = gameObject.GetComponent<PlayerMovement>();

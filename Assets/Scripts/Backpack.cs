@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Backpack : MonoBehaviour
+public class Backpack : Singleton<Backpack>
 {
-    GameController gamecontrol;
+    GameManager gamecontrol;
     Sprite[] items;
     public GameObject box;
     List<GameObject> boxes = new List<GameObject>();
@@ -16,7 +16,7 @@ public class Backpack : MonoBehaviour
     void Start()
     {
         GameObject exit = GameObject.Find("Exit");
-        gamecontrol = GameObject.Find("GameControl").GetComponent<GameController>();
+        gamecontrol = GameObject.Find("GameControl").GetComponent<GameManager>();
         exit.name = gamecontrol.previous;
         Object[] loadedimg = Resources.LoadAll("Items",typeof(Sprite));
         items = new Sprite[loadedimg.Length];

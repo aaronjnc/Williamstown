@@ -49,7 +49,7 @@ public class VehicleMovement : MonoBehaviour
     {
         if (!empty)
         {
-            GameObject.Find("GameControl").GetComponent<GameController>().sceneloader.LoadScene();
+            GameObject.Find("GameControl").GetComponent<GameManager>().sceneloader.LoadScene();
         }
         else
         {
