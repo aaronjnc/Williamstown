@@ -8,6 +8,11 @@ public class BorderLoad : MonoBehaviour
     public Clickinfo.ClickType loadtype;
     public bool left = false;
     PlayerControls controls;
+
+    /// <summary>
+    /// Loads new scene after moving off screen
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.gameObject.name.Equals("Agent"))

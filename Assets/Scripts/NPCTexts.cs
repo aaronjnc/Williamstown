@@ -44,6 +44,11 @@ public class NPCTexts : MonoBehaviour
         name.text = talking[0].name;
         Resize();
     }
+
+    /// <summary>
+    /// Accelerate writing out text
+    /// </summary>
+    /// <param name="ctx"></param>
     void Accelerate(CallbackContext ctx)
     {
         bool dashed = dialog.UpdateRow(rows[0]);

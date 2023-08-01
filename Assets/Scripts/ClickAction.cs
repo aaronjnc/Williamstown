@@ -38,6 +38,12 @@ public class ClickAction : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Moves the player toward clicked item
+    /// </summary>
+    /// <param name="clicked"></param> object clicked
+    /// <param name="info"></param> info about clicked item
     void WalktoLoc(GameObject clicked, Clickinfo info)
     {
         player = playerobj.GetComponent<WalktoLoc>();
@@ -63,6 +69,11 @@ public class ClickAction : MonoBehaviour
         }
         player.enabled = true;
     }
+
+    /// <summary>
+    /// Set new scene information and load scenes
+    /// </summary>
+    /// <param name="clicked"></param> clicked game object
     void NewScene(GameObject clicked)
     {
         NewScene load = gameObject.AddComponent<NewScene>();

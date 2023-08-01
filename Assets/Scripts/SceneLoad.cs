@@ -9,7 +9,10 @@ public class SceneLoad : MonoBehaviour
     GameManager controller;
     GameObject player;
     public GameObject vehicle;
-    // Start is called before the first frame update
+    
+    /// <summary>
+    /// Sets up default information based on information in GameManager
+    /// </summary>
     void Start()
     {
         player = GameObject.Find("Agent");

@@ -5,29 +5,20 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UIClick : MonoBehaviour, IPointerDownHandler
+public class UIClick : Singleton<UIClick>, IPointerDownHandler
 {
     GameManager controller;
     public Sprite journal;
     GameObject agent;
     Vector2 agentpos;
-    private static UIClick _instance;
-    private static UIClick Instance => _instance;
     void Start()
     {
         DontDestroyOnLoad(gameObject.transform.parent.gameObject);
     }
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject.transform.parent.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
+    /// <summary>
+    /// Called when player clicks
+    /// </summary>
+    /// <param name="eventData"></param>
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         GameObject clicked = eventData.pointerCurrentRaycast.gameObject;

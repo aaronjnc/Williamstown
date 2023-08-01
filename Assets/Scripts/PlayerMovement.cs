@@ -5,12 +5,19 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Tooltip("Player rigidbody")]
     Rigidbody2D player;
+    [Tooltip("Player controls")]
     public PlayerControls controls;
+    [Tooltip("Movement direction")]
     Vector2 direction;
+    [Tooltip("Player movement speed")]
     public float speed = 5f;
+    [Tooltip("Left walk animation")]
     public RuntimeAnimatorController left;
+    [Tooltip("Right walk animation")]
     public RuntimeAnimatorController right;
+    [Tooltip("Player sprite")]
     Sprite sprite;
     // Start is called before the first frame update
     void Start()
@@ -38,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         else
             GetComponent<Animator>().runtimeAnimatorController = right;
     }
+
     void Stop(CallbackContext ctx)
     {
         direction = new Vector2(0, 0);

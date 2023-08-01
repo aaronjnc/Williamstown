@@ -13,6 +13,13 @@ public class NewScene : MonoBehaviour
         controller = GameObject.Find("GameControl").GetComponent<GameManager>();
         player = GameObject.Find("Agent");
     }
+
+    /// <summary>
+    /// Set new scene load information
+    /// </summary>
+    /// <param name="click"></param> Load type
+    /// <param name="scene"></param> New scene
+    /// <param name="pos"></param> position of clicked item for reloading
     public void LoadType(Clickinfo.ClickType click, string scene, Vector2 pos)
     {
         if (click == Clickinfo.ClickType.Bus)
@@ -24,6 +31,10 @@ public class NewScene : MonoBehaviour
         newscene = scene;
         controller.click = click;
     }
+
+    /// <summary>
+    /// Load new scene
+    /// </summary>
     public void LoadScene()
     {
         player.GetComponent<PlayerMovement>().controls.Disable();
