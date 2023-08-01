@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class WalktoLoc : MonoBehaviour
 {
+    [Tooltip("Player speed")]
     float speed;
+    [Tooltip("X location to walk to")]
     public float loc;
+    [Tooltip("Movement direction")]
     Vector2 dir = new Vector2(0,0);
+    [Tooltip("Right walk animation")]
     RuntimeAnimatorController right;
+    [Tooltip("Left walk animation")]
     RuntimeAnimatorController left;
     Rigidbody2D player;
+    [Tooltip("Vehicles to enable if walking to bus stop")]
     public GameObject vehicles;
+    [Tooltip("Type of location walking to")]
     public Clickinfo.ClickType type;
+    [Tooltip("True if looking right")]
     bool lookR = false;
+    [Tooltip("Player sprite")]
     Sprite sprite;
+    [Tooltip("NPC talking bubble")]
     public Object NPCTalk;
+    [Tooltip("Player talking bubble")]
     public Object PlayerTalk;
+    [Tooltip("True once player has reached location")]
     bool stopped = false;
+    [Tooltip("Item to pickup if walking to item")]
     public GameObject item;
     GameManager controller;
     private void OnEnable()
@@ -30,6 +43,10 @@ public class WalktoLoc : MonoBehaviour
         left = movement.left;
         Direction();
     }
+
+    /// <summary>
+    /// Determine direction to walk and orients player animation
+    /// </summary>
     void Direction()
     {
         GetComponent<Animator>().enabled = true;
@@ -46,6 +63,10 @@ public class WalktoLoc : MonoBehaviour
             lookR = false;
         }
     }
+
+    /// <summary>
+    /// Called each frame, moves player torwards destination
+    /// </summary>
     private void Update()
     {
         if ((lookR && transform.position.x < loc) || (!lookR && transform.position.x > loc))
@@ -58,6 +79,10 @@ public class WalktoLoc : MonoBehaviour
             Action();
         }
     }
+
+    /// <summary>
+    /// Determines what action to perform upon arriving at destination
+    /// </summary>
     void Action()
     {
         this.enabled = false;
@@ -84,12 +109,20 @@ public class WalktoLoc : MonoBehaviour
                 break;
         }
     }
+
+    /// <summary>
+    /// Used when walking to talking location
+    /// </summary>
     void Talk()
     {
         Instantiate(PlayerTalk);
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         GameObject.Find("Background").GetComponent<ClickAction>().canclick = false;
     }
+
+    /// <summary>
+    /// Used when walking to pick up an item
+    /// </summary>
     void Item()
     {
         Destroy(item);

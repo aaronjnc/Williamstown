@@ -8,13 +8,21 @@ public class Talking : MonoBehaviour
 {
     GameObject player;
     PlayerControls controls;
+    [Tooltip("Text lines")]
     TextMeshPro[] texts = new TextMeshPro[3];
+    [Tooltip("Line highlighted by player")]
     int highlighted = 0;
+    [Tooltip("Default line color")]
     Color basecolor;
+    [Tooltip("Highlighted line color")]
     Color highlightcolor;
+    [Tooltip("NPC text object")]
     public Object NPCText;
+    [Tooltip("Max number of lines")]
     int max = 2;
+    [Tooltip("Dialog object")]
     Dialog dialog;
+    [Tooltip("Dialog rows currently visible")]
     List<int> rows = new List<int>();
     // Start is called before the first frame update
     void Start()
@@ -34,12 +42,22 @@ public class Talking : MonoBehaviour
         UpdateText();
         texts[0].color = highlightcolor;
     }
+
+    /// <summary>
+    /// Switch line currently highlighted
+    /// </summary>
+    /// <param name="ctx"></param>
     void Switch(CallbackContext ctx)
     {
         texts[highlighted].color = basecolor;
         highlighted = Mathf.Clamp(highlighted + (int)ctx.ReadValue<float>(), 0, max);
         texts[highlighted].color = highlightcolor;
     }
+
+    /// <summary>
+    /// Speed up rate at which text is being printed
+    /// </summary>
+    /// <param name="ctx"></param>
     void Accelerate(CallbackContext ctx)
     {
         bool dashed = dialog.UpdateRow(rows[highlighted]);
@@ -65,6 +83,10 @@ public class Talking : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /// <summary>
+    /// Update text in rows with new rows
+    /// </summary>
     void UpdateText()
     {
         rows = dialog.group();
